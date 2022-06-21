@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster
+  name: workloads
   namespace: openshift-gitops
 spec:
   generators:
@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/m4reshal/example-openshift-gitops
       revision: main
       directories:
-      - path: ocp*-XXXX/core/*
+      - path: ocp*-XXXX/workloads/*
   template:
     metadata:
       name: '{{path.basename}}'
