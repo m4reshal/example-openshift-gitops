@@ -9,7 +9,7 @@ spec:
       repoURL: https://github.com/m4reshal/example-openshift-gitops
       revision: main
       directories:
-      - path: ocp*-XXXX/workloads/*
+      - path: ocpdev-255bx/workloads/*
   template:
     metadata:
       name: '{{path.basename}}'
