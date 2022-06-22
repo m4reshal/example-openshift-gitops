@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-- https://github.com/m4reshal/test-applicationsets/tree/master/list-generator/ocp/overlays/blue
+- https://github.com/m4reshal/test-applicationsets/list-generator/ocp/overlays/blue
 
 patchesJson6902:
   - target:
