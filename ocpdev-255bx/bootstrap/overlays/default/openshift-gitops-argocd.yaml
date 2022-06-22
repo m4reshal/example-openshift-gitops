@@ -108,6 +108,7 @@ spec:
         enabled: false
     ingress:
       enabled: false
+    insecure: true
     resources:
       limits:
         cpu: 500m
