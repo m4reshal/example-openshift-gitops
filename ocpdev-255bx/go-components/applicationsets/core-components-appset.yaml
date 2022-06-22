@@ -7,7 +7,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/m4reshal/example-openshift-gitops
-      revision: main
+      revision: master
       directories:
       - path: ocpdev-255bx/core/*
   template:
@@ -27,7 +27,7 @@ spec:
             maxDuration: 5m
       source:
         repoURL: https://github.com/m4reshal/example-openshift-gitops
-        targetRevision: main
+        targetRevision: master
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
