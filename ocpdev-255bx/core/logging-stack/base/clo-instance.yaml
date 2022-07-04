@@ -1,0 +1,114 @@
+apiVersion: "logging.openshift.io/v1"
+kind: "ClusterLogging"
+metadata:
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+    argocd.argoproj.io/sync-wave: "7"
+  name: "instance"
+  namespace: "openshift-logging"
+spec:
+  managementState: "Managed"
+  logStore:
+    elasticsearch:
+      nodeCount: 1
+      redundancyPolicy: ZeroRedundancy
+      resources:
+        limits:
+          memory: 8Gi
+        requests:
+          cpu: 1
+          memory: 8Gi
+      storage:
+        size: 200G
+        storageClassName: "PATCH_ME"
+      tolerations:
+      - effect: NoSchedule
+        key: logging
+        operator: Equal
+        value: reserved
+      - effect: NoExecute
+        key: logging
+        operator: Equal
+        value: reserved
+      - effect: NoSchedule
+        key: infra
+        operator: Equal
+        value: reserved
+      - effect: NoExecute
+        key: infra
+        operator: Equal
+        value: reserved
+    retentionPolicy:
+      application:
+        maxAge: 3d
+      audit:
+        maxAge: 3d
+      infra:
+        maxAge: 3d
+    type: elasticsearch
+  visualization:
+    kibana:
+      replicas: 1
+      resources:
+        limits:
+          memory: 2Gi
+        requests:
+          cpu: 100m
+          memory: 1Gi
+      tolerations:
+      - effect: NoSchedule
+        key: logging
+        operator: Equal
+        value: reserved
+      - effect: NoExecute
+        key: logging
+        operator: Equal
+        value: reserved
+      - effect: NoSchedule
+        key: infra
+        operator: Equal
+        value: reserved
+      - effect: NoExecute
+        key: infra
+        operator: Equal
+        value: reserved
+    type: kibana
+  curation:
+    type: "curator"
+    curator:
+      schedule: "30 3 * * *"
+  collection:
+    logs:
+      fluentd:
+        resources:
+          limits:
+            memory: 2Gi
+          requests:
+            cpu: 100m
+            memory: 1Gi
+        tolerations:
+        - effect: NoSchedule
+          key: logging
+          operator: Equal
+          value: reserved
+        - effect: NoExecute
+          key: logging
+          operator: Equal
+          value: reserved
+        - effect: NoSchedule
+          key: infra
+          operator: Equal
+          value: reserved
+        - effect: NoExecute
+          key: infra
+          operator: Equal
+          value: reserved
+        - effect: NoSchedule
+          key: router
+          operator: Equal
+          value: reserved
+        - effect: NoExecute
+          key: router
+          operator: Equal
+          value: reserved
+      type: fluentd
