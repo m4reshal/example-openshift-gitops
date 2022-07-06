@@ -4,7 +4,7 @@ metadata:
   creationTimestamp: null
   labels:
     app.kubernetes.io/instance: blue-green-app
-  name: live-traffic
+  name: preview-traffic
 spec:
   port:
     targetPort: 8080
