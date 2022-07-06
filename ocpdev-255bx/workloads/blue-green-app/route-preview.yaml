@@ -1,0 +1,15 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/instance: blue-green-app
+  name: live-traffic
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: rollout-bluegreen-preview
+    weight: null
+status: {}
