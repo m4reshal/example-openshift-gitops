@@ -7,3 +7,4 @@ resources:
 - service.yml
 - ns.yaml
 - route.yaml
+- route-preview.yaml
