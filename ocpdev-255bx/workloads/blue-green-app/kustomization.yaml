@@ -5,3 +5,4 @@ resources:
 - rollout.yml
 - service-preview.yml
 - service.yml
+- ns.yaml
