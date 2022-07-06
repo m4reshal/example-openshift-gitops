@@ -3,7 +3,5 @@ kind: Namespace
 metadata:
   creationTimestamp: null
   name: blue-green-app
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
 spec: {}
 status: {}
