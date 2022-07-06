@@ -9,7 +9,7 @@ spec:
   port:
     targetPort: 8080
   to:
-    kind: ""
+    kind: Service
     name: rollout-bluegreen-active
     weight: null
 status: {}
