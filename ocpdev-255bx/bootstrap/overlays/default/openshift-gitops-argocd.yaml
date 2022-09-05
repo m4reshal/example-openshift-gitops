@@ -22,8 +22,8 @@ spec:
         cpu: 250m
         memory: 1Gi
     sharding: {}
-  sso:
-    provider: keycloak
+  #sso:
+  #  provider: keycloak
   dex: {}
   #dex:
   #  openShiftOAuth: true
