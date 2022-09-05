@@ -24,6 +24,7 @@ spec:
     sharding: {}
   sso:
     provider: keycloak
+  dex: {}
   #dex:
   #  openShiftOAuth: true
   #  resources:
