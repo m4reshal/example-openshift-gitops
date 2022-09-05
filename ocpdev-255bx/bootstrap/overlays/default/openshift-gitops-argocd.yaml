@@ -71,6 +71,7 @@ spec:
     policy: |
       g, system:cluster-admins, role:admin
       g, cluster-admins, role:admin
+      g, REDHAT_ADMINS, role:admin
     scopes: '[groups]'
   redis:
     resources:
