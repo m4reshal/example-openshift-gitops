@@ -121,9 +121,9 @@ spec:
         memory: 128Mi
     route:
       enabled: true
-      tls:
-        insecureEdgeTerminationPolicy: Redirect
-        termination: edge
+      #tls:
+      #  insecureEdgeTerminationPolicy: Redirect
+      #  termination: edge
     service:
       type: ""
   tls:
