@@ -4,6 +4,8 @@ metadata:
   name: openshift-gitops
   namespace: openshift-gitops
 spec:
+  extraConfig:
+    oidc.tls.insecure.skip.verify: "true"
   applicationSet:
     resources:
       limits:
