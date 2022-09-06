@@ -9,3 +9,6 @@ bases:
 resources:
 - openshift-gitops-argocd.yaml
 - openshift-gitops-rbac-policy.yaml
+
+patches:
+- ./cm-patches.yaml
