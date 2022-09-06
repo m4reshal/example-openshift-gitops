@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: postsync-patch-cm
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-wave: "7"
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - command:
+        - oc
+        - patch
+        - -n
+        - openshift-gitops
+        - cm/argocd-cm
+        - -p
+        - '{"data":{"oidc.tls.insecure.skip.verify": "true"}}'
+        image: registry.redhat.io/openshift4/ose-cli:v4.10
+        name: my-job
+        resources: {}
+      restartPolicy: Never
+status: {}

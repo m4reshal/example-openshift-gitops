@@ -9,4 +9,4 @@ bases:
 resources:
 - openshift-gitops-argocd.yaml
 - openshift-gitops-rbac-policy.yaml
-
+- postsync-patch-cm-job.yaml
