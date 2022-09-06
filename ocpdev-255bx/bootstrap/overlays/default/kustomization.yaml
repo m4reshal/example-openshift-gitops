@@ -10,3 +10,5 @@ resources:
 - openshift-gitops-argocd.yaml
 - openshift-gitops-rbac-policy.yaml
 - postsync-patch-cm-job.yaml
+- rolebinding-postsync-sa.yaml
+- postsync-sa.yaml

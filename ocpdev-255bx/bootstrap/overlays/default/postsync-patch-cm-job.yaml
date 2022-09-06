@@ -23,9 +23,11 @@ spec:
         - -p
         - '{"data":{"oidc.tls.insecure.skip.verify": "true"}}'
         image: registry.redhat.io/openshift4/ose-cli:v4.10
-        name: my-job
+        name: post-sync-patch-argocd-cm-job
         resources: {}
       restartPolicy: Never
-      serviceAccountName: "openshift-gitops-argocd-application-controller"
-      serviceAccount: "openshift-gitops-argocd-application-controller"      
+      serviceAccountName: "postsync-sa"
+      serviceAccount: "postsync-sa"      
+      #serviceAccountName: "openshift-gitops-argocd-application-controller"
+      #serviceAccount: "openshift-gitops-argocd-application-controller"      
 status: {}
