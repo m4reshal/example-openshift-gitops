@@ -13,21 +13,36 @@ spec:
     metadata:
       creationTimestamp: null
     spec:
-      containers:
-      - command:
-        - oc
-        - patch
-        - -n
-        - openshift-gitops
-        - cm/argocd-cm
-        - -p
-        - '{"data":{"oidc.tls.insecure.skip.verify": "true"}}'
+      initContainers:
+      - command: 
+        - "/bin/sh"
+        -  "-c"
+        - | 
+          oc patch configmap argocd-cm --patch='{"data": {"oidc.tls.insecure.skip.verify": "true"}}' > /out/patch_output.txt
         image: registry.redhat.io/openshift4/ose-cli:v4.10
-        name: post-sync-patch-argocd-cm-job
+        name: patch-argocm
+        volumeMounts:
+        - mountPath: /out
+          name: out
+        resources: {}
+      containers:
+      - name: restart-argo-server-pod
+        image: registry.redhat.io/openshift4/ose-cli:v4.10
+        command:
+        - "/bin/sh"
+        -  "-c"
+        - |
+          grep "no change" /out/patch_output.txt && echo "cm/argocd-cm has not changed." || oc delete $(oc get po  --selector=app.kubernetes.io/name=openshift-gitops-server -o name)
+        volumeMounts:
+        - mountPath: /out
+          name: out
         resources: {}
       restartPolicy: Never
       serviceAccountName: "postsync-sa"
       serviceAccount: "postsync-sa"      
       #serviceAccountName: "openshift-gitops-argocd-application-controller"
-      #serviceAccount: "openshift-gitops-argocd-application-controller"      
+      #serviceAccount: "openshift-gitops-argocd-application-controller" 
+      volumes:
+      - name: out
+        emptyDir: {}
 status: {}
