@@ -25,7 +25,7 @@ spec:
         - mountPath: /patches-dir
           name: configmap-volume
           readOnly: true
-          subPath: patches-openshift-gitops-repo-server.yaml:
+          subPath: patches-openshift-gitops-repo-server.yaml
         resources: {}
       restartPolicy: Never
       serviceAccountName: "postsync-sa"
