@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openshift-gitops-repo-server
+  namespace: openshift-gitops
+spec:
+  template:
+    spec:
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: openshift-gitops-repo-server
+              topologyKey: failure-domain.beta.kubernetes.io/zone
+            weight: 100
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: openshift-gitops-repo-server
+            topologyKey: kubernetes.io/hostname

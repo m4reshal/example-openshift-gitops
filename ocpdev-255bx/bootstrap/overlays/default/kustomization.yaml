@@ -12,3 +12,7 @@ resources:
 - postsync-patch-cm-job.yaml
 - rolebinding-postsync-sa.yaml
 - postsync-sa.yaml
+
+patches:
+- ./patches-openshift-gitops-repo-server.yaml
+- ./patches-openshift-gitops-server.yaml
