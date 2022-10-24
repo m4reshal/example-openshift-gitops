@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  creationTimestamp: null
+  name: postsync-patch-openshift-gitops-server
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook-delete-policy: HookSucceeded
+    argocd.argoproj.io/sync-wave: "7"
+spec:
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - name: patch-openshift-gitops-server
+        image: registry.redhat.io/openshift4/ose-cli:v4.10
+        command:
+        - "/bin/sh"
+        -  "-c"
+        - |
+          oc get  deploy openshift-gitops-server -o jsonpath='{.spec.template.spec.affinity}'  | grep podAntiAffinity &&  echo  "podAntiAffinity zaten mevcut, deploy/openshift-gitops-server degistirilmemistir"  || oc patch deploy openshift-gitops-server --patch-file /patches-dir/patches-openshift-gitops-server.yaml
+        volumeMounts:
+        - mountPath: /patches-dir
+          name: configmap-volume
+          readOnly: true
+          subPath: patches-openshift-gitops-server.yaml:
+        resources: {}
+      restartPolicy: Never
+      serviceAccountName: "postsync-sa"
+      serviceAccount: "postsync-sa"      
+      volumes:
+      volumes:
+      - name: configmap-volume
+        configMap:
+          defaultMode: 0700
+          name: patch-openshift-gitops-server-cm
+status: {}
