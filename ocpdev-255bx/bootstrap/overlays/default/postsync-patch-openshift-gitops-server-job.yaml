@@ -31,7 +31,6 @@ spec:
       serviceAccountName: "postsync-sa"
       serviceAccount: "postsync-sa"      
       volumes:
-      volumes:
       - name: configmap-volume
         configMap:
           defaultMode: 0700
