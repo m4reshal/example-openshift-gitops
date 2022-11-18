@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: cluster
+  name: cluster-apps
   namespace: openshift-gitops
 spec:
   generators:
@@ -14,11 +14,21 @@ spec:
     metadata:
       name: '{{path.basename}}'
     spec:
-      project: default
+      ignoreDifferences:
+      - group: networking.istio.io
+        kind: VirtualService
+        jsonPointers:
+        - /spec/http/0
+      - kind: ConfigMap
+        jsonPointers:
+        - /data/service-ca.crt
+      project: cluster-config
       syncPolicy:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+        - ApplyOutOfSyncOnly=true
         retry:
           limit: 15
           backoff:
