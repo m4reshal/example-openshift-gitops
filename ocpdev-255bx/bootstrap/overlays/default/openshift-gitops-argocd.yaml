@@ -25,7 +25,9 @@ spec:
       requests:
         cpu: 250m
         memory: 1Gi
-    sharding: {}
+    sharding:
+      enabled: true
+      replicas: 2
   sso:
     provider: keycloak
   #dex: {}

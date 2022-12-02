@@ -6,16 +6,16 @@ metadata:
 data:
   config.yaml: |
     enableUserWorkload: true #to be used with istio
-    prometheusOperator:
+    #prometheusOperator:
       #nodeSelector:
         #node-role.kubernetes.io/infra: ""
-      tolerations:
-      - key: infra
-        value: reserved
-        effect: NoSchedule
-      - key: infra
-        value: reserved
-        effect: NoExecute
+      #tolerations:
+      #- key: infra
+      #  value: reserved
+      #  effect: NoSchedule
+      #- key: infra
+      #  value: reserved
+      #  effect: NoExecute
     prometheusK8s:
       retention: 7d
       volumeClaimTemplate:
