@@ -27,7 +27,7 @@ spec:
         memory: 1Gi
     sharding:
       enabled: true
-      replicas: 2
+      replicas: 1
   sso:
     provider: keycloak
   #dex: {}
@@ -54,7 +54,8 @@ spec:
     route:
       enabled: false
   ha:
-    enabled: true
+    #enabled: true
+    enabled: false
     resources:
       limits:
         cpu: 500m
@@ -81,16 +82,17 @@ spec:
         cpu: 500m
         memory: 256Mi
       requests:
-        cpu: 250m
+        cpu: 150m
         memory: 128Mi
   repo:
-    replicas: 2
+    #replicas: 2
+    replicas: 1
     resources:
       limits:
         cpu: "1"
         memory: 1Gi
       requests:
-        cpu: 250m
+        cpu: 150m
         memory: 256Mi
   resourceCustomizations: |
     bitnami.com/SealedSecret:
@@ -112,7 +114,8 @@ spec:
       - TaskRun
       - PipelineRun
   server:
-    replicas: 2
+    replicas: 1
+    #replicas: 2
     autoscale:
       enabled: false
     grpc:
