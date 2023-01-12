@@ -17,7 +17,7 @@ data:
       #  value: reserved
       #  effect: NoExecute
     prometheusK8s:
-      retention: 7d
+      retention: 3d
       volumeClaimTemplate:
         spec:
           storageClassName: thin #ocs-storagecluster-ceph-rbd
