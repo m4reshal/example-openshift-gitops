@@ -4,10 +4,10 @@ metadata:
   name: openshift-gitops
   namespace: openshift-gitops
 spec:
-  #extraConfig:
+  extraConfig:
+    oidc.tls.insecure.skip.verify: "true"  #This line is used in 1.6.0
   #  "admin.enabled": "true"
     #"admin.enabled": "true" is used in 1.5.5
-    #oidc.tls.insecure.skip.verify: "true"  #This line is used in 1.6.0
   applicationSet:
     resources:
       limits:
