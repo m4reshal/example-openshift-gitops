@@ -1,11 +1,11 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monorepo-manifest
+  name: monorepo-manifest-ocphb
   namespace: openshift-gitops
 spec:
   destination:
-    server: https://kubernetes.default.svc
+    server: https://api.ocphb.konsalt.info:6443
   project: workloads
   source:
     path: manifests/nginx

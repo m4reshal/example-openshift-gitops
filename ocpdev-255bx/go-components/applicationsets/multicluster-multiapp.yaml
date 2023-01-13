@@ -17,8 +17,14 @@ spec:
           # cluster generator, 'child' #2
           - clusters:
               selector:
-                matchLabels:
+                #matchLabels:
                   #argocd.argoproj.io/secret-type: cluster
+                matchExpressions:
+                  - key: usage
+                    operator: In
+                    values:
+                      - production
+                      - development
   template:
     metadata:
       name: '{{path.basename}}'
