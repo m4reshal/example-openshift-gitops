@@ -27,7 +27,7 @@ spec:
                       - development
   template:
     metadata:
-      name: '{{path.basename}}'
+      name: '{{path.basename}}-{{name}}'
     spec:
       project: workloads
       syncPolicy:
