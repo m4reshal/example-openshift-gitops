@@ -5,6 +5,7 @@ bases:
 - ../../base
 - ../../../go-components/applicationsets
 - ../../../go-components/argocdproj/base
+- ../../../../cluster-specific/local-cluster/
 
 resources:
 - openshift-gitops-argocd.yaml
