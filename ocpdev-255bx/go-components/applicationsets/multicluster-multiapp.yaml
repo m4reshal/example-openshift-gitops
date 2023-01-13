@@ -45,4 +45,4 @@ spec:
         targetRevision: master
         path: '{{path}}/envs/{{metadata.labels.usage}}'
       destination:
-        server: https://kubernetes.default.svc
+        server: '{{server}}'
