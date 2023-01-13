@@ -32,8 +32,10 @@ spec:
       project: workloads
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          #prune: true
+          #selfHeal: true
+          selfHeal: false
+          prune: false
         retry:
           limit: 15
           backoff:
