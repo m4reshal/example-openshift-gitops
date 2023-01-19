@@ -1,20 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: remote-argo-nginx
+  name: remote-nginx-app-ocphb
   namespace: openshift-gitops
 spec:
   destination:
-    namespace: openshift-gitops
-    server: 'https://kubernetes.default.svc'
-  project: default
+    server: https://api.ocphb.konsalt.info:6443
+  project: workloads
   source:
-    path: nginx
-    repoURL: 'https://github.com/jnpacker/application-samples.git'
+    path: manifests/remote-openshift-gitops-app
+    repoURL: https://github.com/m4reshal/example-openshift-gitops
     targetRevision: HEAD
   syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true

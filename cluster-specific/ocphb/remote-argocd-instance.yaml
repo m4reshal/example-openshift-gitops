@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: monorepo-manifest-remote-argocd-ocphb
+  name: remote-argocd-ocphb
   namespace: openshift-gitops
 spec:
   destination:
     server: https://api.ocphb.konsalt.info:6443
   project: workloads
   source:
-    path: manifests/remote-openshift-gitops
+    path: manifests/remote-openshift-gitops-instance
     repoURL: https://github.com/m4reshal/example-openshift-gitops
     targetRevision: HEAD
   syncPolicy:
