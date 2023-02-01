@@ -12,6 +12,8 @@ spec:
       - path: ocpdev-255bx/core/*
       - path: ocpdev-255bx/core/logging-stack
         exclude: true
+      - path: ocpdev-255bx/core/service-mesh
+        exclude: true
   template:
     metadata:
       name: '{{path.basename}}'
