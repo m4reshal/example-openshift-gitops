@@ -10,6 +10,8 @@ spec:
       revision: master
       directories:
       - path: ocpdev-255bx/workloads/*
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
       name: '{{path.basename}}'

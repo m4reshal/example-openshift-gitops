@@ -26,6 +26,8 @@ spec:
                     values:
                       - production
                       - development
+  syncPolicy:
+    preserveResourcesOnDeletion: true
   template:
     metadata:
       #name: '{{path.basename}}-{{metadata.labels.usage}}-{{name}}'
