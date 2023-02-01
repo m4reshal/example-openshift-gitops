@@ -10,6 +10,8 @@ spec:
       revision: master
       directories:
       - path: ocpdev-255bx/core/*
+      - path: ocpdev-255bx/core/logging-stack
+        exclude: true
   template:
     metadata:
       name: '{{path.basename}}'
@@ -28,6 +30,7 @@ spec:
           prune: true
           #selfHeal: true
           selfHeal: false
+          allowEmpty: true
         syncOptions:
         - ApplyOutOfSyncOnly=true
         retry:
